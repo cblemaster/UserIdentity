@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserIdentity.API.Entities;
+using UserIdentity.Core.Entities;
 
 namespace UserIdentity.API.DatabaseContexts;
 

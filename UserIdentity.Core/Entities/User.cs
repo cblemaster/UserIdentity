@@ -1,4 +1,4 @@
-﻿namespace UserIdentity.API.Entities;
+﻿namespace UserIdentity.Core.Entities;
 
 public partial class User
 {

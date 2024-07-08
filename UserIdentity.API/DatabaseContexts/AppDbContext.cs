@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UserIdentity.API.Entities;
 
-namespace UserIdentity.API.DataContext;
+namespace UserIdentity.API.DatabaseContexts;
 
-public partial class UserIdentityContext : DbContext
+public partial class AppDbContext : DbContext
 {
-    public UserIdentityContext()
+    public AppDbContext()
     {
     }
 
-    public UserIdentityContext(DbContextOptions<UserIdentityContext> options)
+    public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
     }

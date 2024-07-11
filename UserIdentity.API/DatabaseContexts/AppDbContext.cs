@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UserIdentity.Core;
 using UserIdentity.Core.Entities;
 
 namespace UserIdentity.API.DatabaseContexts;
@@ -31,7 +32,7 @@ public partial class AppDbContext : DbContext
             entity.HasIndex(e => e.Role1, "UC_Role_Role").IsUnique();
 
             entity.Property(e => e.Role1)
-                .HasMaxLength(50)
+                .HasMaxLength(DataSchemaConstants.ROLE_ROLE_MAX_LENGTH)
                 .IsUnicode(false)
                 .HasColumnName("Role");
         });
@@ -48,27 +49,27 @@ public partial class AppDbContext : DbContext
 
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
             entity.Property(e => e.Email)
-                .HasMaxLength(255)
+                .HasMaxLength(DataSchemaConstants.USER_EMAIL_MAX_LENGTH)
                 .IsUnicode(false);
             entity.Property(e => e.FirstName)
-                .HasMaxLength(255)
+                .HasMaxLength(DataSchemaConstants.USER_FIRSTNAME_MAX_LENGTH)
                 .IsUnicode(false);
             entity.Property(e => e.LastName)
-                .HasMaxLength(255)
+                .HasMaxLength(DataSchemaConstants.USER_LASTNAME_MAX_LENGTH)
                 .IsUnicode(false);
             entity.Property(e => e.PasswordHash)
-                .HasMaxLength(200)
+                .HasMaxLength(DataSchemaConstants.USER_PASSWORDHASH_MAX_LENGTH)
                 .IsUnicode(false);
             entity.Property(e => e.Phone)
-                .HasMaxLength(10)
+                .HasMaxLength(DataSchemaConstants.USER_PHONE_MAX_LENGTH)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Salt)
-                .HasMaxLength(200)
+                .HasMaxLength(DataSchemaConstants.USER_SALT_MAX_LENGTH)
                 .IsUnicode(false);
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
             entity.Property(e => e.Username)
-                .HasMaxLength(50)
+                .HasMaxLength(DataSchemaConstants.USER_USERNAME_MAX_LENGTH)
                 .IsUnicode(false);
 
             entity.HasMany(d => d.Roles).WithMany(p => p.Users)

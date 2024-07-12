@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using System;
 using UserIdentity.Core.DataTransferObjects;
 using UserIdentity.Core.Interfaces;
 
@@ -48,8 +47,6 @@ public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>, IUpdateU
             .NotEmpty()
             .WithMessage("User must have at least one (1) role.");
     }
-
-    private void DoNothing() { }
 
     private static string GetErrorMessageForIsRequiredAndHasMaxLength
         (string propName, int maxLength) =>

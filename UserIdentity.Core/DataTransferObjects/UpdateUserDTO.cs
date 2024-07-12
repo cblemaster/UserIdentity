@@ -16,5 +16,5 @@ public class UpdateUserDTO
 
     public DateTime UpdateDate { get; set; }
 
-    public ICollection<RoleDTO> Roles { get; set; } = [];
+    public ICollection<GetRoleDTO> Roles { get; set; } = [];
 }

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using System;
 using UserIdentity.Core.DataTransferObjects;
 using UserIdentity.Core.Interfaces;
 
@@ -58,7 +57,6 @@ public class CreateUserDTOValidator : AbstractValidator<CreateUserDTO>, ICreateU
         (string propName, int maxLength) =>
             $"{propName.ToUpper()} is required and must be {maxLength} " +
             "characters or fewer.";
-    private void DoNothing() { }
 
     // TODO: Replace this with api calls
     //private static bool IsUsernameUnique(string username) =>

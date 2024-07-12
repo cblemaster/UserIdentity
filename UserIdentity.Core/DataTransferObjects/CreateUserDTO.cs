@@ -16,5 +16,5 @@ public class CreateUserDTO
 
     public DateTime CreateDate { get; set; }
 
-    public ICollection<RoleDTO> Roles { get; set; } = [];
+    public ICollection<GetRoleDTO> Roles { get; set; } = [];
 }

@@ -68,13 +68,15 @@ internal static class WebApplicationExtensions
         builder.Services
             .AddSingleton<ITokenGenerator>(tk => new JwtGenerator(jwtSecret))
             .AddSingleton<IPasswordHasher, PasswordHasher>()
+            .AddTransient<ICreateUserDTOValidator, CreateUserDTOValidator>()
             .AddTransient<IUpdateUserDTOValidator, UpdateUserDTOValidator>()
-            .AddTransient<ICreateUserDTOValidator, CreateUserDTOValidator>();
+            .AddTransient<ICreateRoleDTOValidator, CreateRoleDTOValidator>()
+            .AddTransient<IUpdateRoleDTOValidator, UpdateRoleDTOValidator>();
     }
 
     private static GetUserDTO MapUserEntityToGetUserDTO(User user)
     {
-        List<RoleDTO> roles = [];
+        List<GetRoleDTO> roles = [];
         foreach (Role role in user.Roles)
         {
             roles.Add(new(role.RoleId, role.Role1));

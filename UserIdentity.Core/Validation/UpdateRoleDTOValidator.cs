@@ -12,16 +12,6 @@ public class UpdateRoleDTOValidator : AbstractValidator<UpdateRoleDTO>
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.ROLE_ROLE_MAX_LENGTH)
             .WithMessage(nameof(Core.Entities.Role.Role1).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.ROLE_ROLE_MAX_LENGTH));
-                nameof(Core.Entities.Role.Role1), DataSchemaConstants.ROLE_ROLE_MAX_LENGTH));
-        //RuleFor(v => v.Username)
-        //    .Must(u => IsUsernameUnique(u))
-        //    .WithMessage("{PropertyName} {PropertyValue} is already in use.");
+        // TODO: Check for unique role
     }
-
-    private static string GetErrorMessageForIsRequiredAndHasMaxLength
-        (string propName, int maxLength) =>
-            $"{propName.ToUpper()} is required and must be {maxLength} " +
-            "characters or fewer.";
-
-    // TODO: Check for unique role with api call
 }

@@ -11,7 +11,7 @@ public class UpdateRoleDTOValidator : AbstractValidator<UpdateRoleDTO>
         RuleFor(v => v.Role.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.ROLE_ROLE_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
+            .WithMessage(nameof(Core.Entities.Role.Role1).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.ROLE_ROLE_MAX_LENGTH));
                 nameof(Core.Entities.Role.Role1), DataSchemaConstants.ROLE_ROLE_MAX_LENGTH));
         //RuleFor(v => v.Username)
         //    .Must(u => IsUsernameUnique(u))

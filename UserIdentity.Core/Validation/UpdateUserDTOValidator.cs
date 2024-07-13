@@ -11,25 +11,22 @@ public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>
         RuleFor(v => v.Username.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.USER_USERNAME_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
-                nameof(Core.Entities.User.Username), DataSchemaConstants.USER_USERNAME_MAX_LENGTH));
-        //RuleFor(v => v.Username)
-        //    .Must(u => IsUsernameUnique(u))
-        //    .WithMessage("{PropertyName} {PropertyValue} is already in use.");
+            .WithMessage(nameof(Core.Entities.User.Username).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.USER_USERNAME_MAX_LENGTH));
+        // TODO: Check for unique username
         RuleFor(v => v.FirstName.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.USER_FIRSTNAME_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
+            .WithMessage(nameof(Core.Entities.User.FirstName).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.USER_FIRSTNAME_MAX_LENGTH));
                 nameof(Core.Entities.User.FirstName), DataSchemaConstants.USER_FIRSTNAME_MAX_LENGTH));
         RuleFor(v => v.LastName.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.USER_LASTNAME_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
+            .WithMessage(nameof(Core.Entities.User.LastName).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.USER_LASTNAME_MAX_LENGTH));
                 nameof(Core.Entities.User.LastName), DataSchemaConstants.USER_LASTNAME_MAX_LENGTH));
         RuleFor(v => v.Email.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.USER_EMAIL_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
+            .WithMessage(nameof(Core.Entities.User.Email).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.USER_EMAIL_MAX_LENGTH));
                 nameof(Core.Entities.User.Email), DataSchemaConstants.USER_EMAIL_MAX_LENGTH));
         //RuleFor(v => v.Email)
         //    .Must(u => IsEmailUnique(u))
@@ -37,7 +34,7 @@ public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>
         RuleFor(v => v.Phone.Length)
             .InclusiveBetween(DataSchemaConstants.REQUIRED_STRING_MIN_LENGTH,
                 DataSchemaConstants.USER_PHONE_MAX_LENGTH)
-            .WithMessage(GetErrorMessageForIsRequiredAndHasMaxLength(
+            .WithMessage(nameof(Core.Entities.User.Username).GetErrorMessageForIsRequiredAndHasMaxLength(DataSchemaConstants.USER_PHONE_MAX_LENGTH));
                 nameof(Core.Entities.User.Phone), DataSchemaConstants.USER_PHONE_MAX_LENGTH));
         //RuleFor(v => v.Phone)
         //    .Must(u => IsPhoneUnique(u))

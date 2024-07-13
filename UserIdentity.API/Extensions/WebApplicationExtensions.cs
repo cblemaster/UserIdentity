@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using UserIdentity.Core.DataTransferObjects;
-using UserIdentity.Core.Entities;
-using UserIdentity.Core.Interfaces;
 using UserIdentity.Core.UserSecurity;
 using UserIdentity.Core.Validation;
 using DbContext = UserIdentity.API.DatabaseContexts.AppDbContext;
@@ -68,19 +66,9 @@ internal static class WebApplicationExtensions
         builder.Services
             .AddSingleton<ITokenGenerator>(tk => new JwtGenerator(jwtSecret))
             .AddSingleton<IPasswordHasher, PasswordHasher>()
-            .AddTransient<ICreateUserDTOValidator, CreateUserDTOValidator>()
-            .AddTransient<IUpdateUserDTOValidator, UpdateUserDTOValidator>()
-            .AddTransient<ICreateRoleDTOValidator, CreateRoleDTOValidator>()
-            .AddTransient<IUpdateRoleDTOValidator, UpdateRoleDTOValidator>();
-    }
-
-    private static GetUserDTO MapUserEntityToGetUserDTO(User user)
-    {
-        List<GetRoleDTO> roles = [];
-        foreach (Role role in user.Roles)
-        {
-            roles.Add(new(role.RoleId, role.Role1));
-        }
-        return new GetUserDTO(user.UserId, user.Username, user.FirstName, user.LastName, user.Email, user.Phone, user.CreateDate, user.UpdateDate, roles.AsEnumerable());
+            .AddScoped<IValidator<CreateRoleDTO>, CreateRoleDTOValidator>()
+            .AddScoped<IValidator<CreateUserDTO>, CreateUserDTOValidator>()
+            .AddScoped<IValidator<UpdateRoleDTO>, UpdateRoleDTOValidator>()
+            .AddScoped<IValidator<UpdateRoleDTO>, UpdateRoleDTOValidator>();
     }
 }

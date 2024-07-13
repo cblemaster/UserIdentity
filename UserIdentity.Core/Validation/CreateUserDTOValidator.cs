@@ -1,11 +1,10 @@
 ﻿using FluentValidation;
 using UserIdentity.Core.DataTransferObjects;
-using UserIdentity.Core.Interfaces;
 
 namespace UserIdentity.Core.Validation;
 
 // TODO: A lot of code duplication with UpdateUserDTOValidator.cs
-public class CreateUserDTOValidator : AbstractValidator<CreateUserDTO>, ICreateUserDTOValidator
+public class CreateUserDTOValidator : AbstractValidator<CreateUserDTO>
 {
     public CreateUserDTOValidator()
     {

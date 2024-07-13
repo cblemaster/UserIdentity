@@ -1,10 +1,9 @@
 ﻿using FluentValidation;
 using UserIdentity.Core.DataTransferObjects;
-using UserIdentity.Core.Interfaces;
 
 namespace UserIdentity.Core.Validation;
 
-public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>, IUpdateUserDTOValidator
+public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>
 {
     public UpdateUserDTOValidator()
     {

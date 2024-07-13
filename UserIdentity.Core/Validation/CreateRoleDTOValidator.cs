@@ -1,10 +1,9 @@
 ﻿using FluentValidation;
 using UserIdentity.Core.DataTransferObjects;
-using UserIdentity.Core.Interfaces;
 
 namespace UserIdentity.Core.Validation;
 
-public class CreateRoleDTOValidator : AbstractValidator<CreateRoleDTO>, ICreateRoleDTOValidator
+public class CreateRoleDTOValidator : AbstractValidator<CreateRoleDTO>
 {
     public CreateRoleDTOValidator() =>
         RuleFor(v => v.Role.Length)
